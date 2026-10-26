@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>John Konteas</title>
+<meta name="description" content="End-to-end data science: data engineering, analysis, deep learning, MLOps and AI engineering.">
+<meta property="og:title" content="John Konteas">
+<meta property="og:description" content="I turn raw, messy data into decisions people can trust.">
+<meta property="og:image" content="https://johnnyk1090.github.io/film-still.jpg">
+<meta name="theme-color" content="#000000">
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  body { display: grid; place-items: center; font: 500 13px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; letter-spacing: .25em; }
+  video { width: 100vw; height: 100vh; height: 100dvh; object-fit: contain; background: #000; display: block;
+          opacity: 0; transition: opacity 1.6s ease; }
+  video.on { opacity: 1; }
+  .ctl { position: fixed; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom));
+         display: flex; gap: 10px; }
+  button, a.btn { appearance: none; border: 1px solid rgba(233,184,114,.55); background: rgba(0,0,0,.45); color: #F6DCAE;
+         padding: 12px 18px; border-radius: 999px; font: inherit; letter-spacing: inherit; cursor: pointer; text-decoration: none;
+         backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: background .2s, border-color .2s; }
+  button:hover, a.btn:hover { background: rgba(233,184,114,.16); border-color: #E9B872; }
+  button:focus-visible, a.btn:focus-visible { outline: 2px solid #E9B872; outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { video { transition: none; } }
+</style>
+</head>
+<body>
+<video id="film" autoplay muted loop playsinline preload="auto" poster="film-still.jpg" aria-label="A short film about John Konteas's work">
+  <source src="film-m.mp4" type="video/mp4" media="(max-aspect-ratio: 4/5)">
+  <source src="film.mp4" type="video/mp4">
+</video>
+<div class="ctl">
+  <button id="sound" type="button" aria-pressed="false">SOUND ON</button>
+  <a class="btn" href="https://github.com/johnnyk1090">WORK &#8599;</a>
+</div>
+<script>
+  const v = document.getElementById('film'), b = document.getElementById('sound');
+  const show = () => v.classList.add('on');
+  v.addEventListener('playing', show); setTimeout(show, 1200);
+  b.addEventListener('click', () => {
+    const on = v.muted;
+    v.muted = !on;
+    if (on) { v.currentTime = 0; v.play(); }
+    b.textContent = on ? 'SOUND OFF' : 'SOUND ON';
+    b.setAttribute('aria-pressed', String(on));
+  });
+</script>
+</body>
+</html>
