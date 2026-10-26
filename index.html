@@ -40,9 +40,9 @@
   const show = () => v.classList.add('on');
   v.addEventListener('playing', show); setTimeout(show, 1200);
   b.addEventListener('click', () => {
-    const on = v.muted;
+    const on = v.muted;           // sound toggles in place; the film keeps its position
     v.muted = !on;
-    if (on) { v.currentTime = 0; v.play(); }
+    if (v.paused) v.play();
     b.textContent = on ? 'SOUND OFF' : 'SOUND ON';
     b.setAttribute('aria-pressed', String(on));
   });
